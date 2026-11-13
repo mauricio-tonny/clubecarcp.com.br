@@ -51,6 +51,12 @@ h1{font-size:clamp(40px,7.3vw,106px);line-height:.9;letter-spacing:-.08em;font-w
 .social-links{display:flex;gap:8px}
 .portal-button{width:auto;height:auto;color:inherit;border:1px solid #ffffff60;font-size:inherit;font-weight:inherit}
 .portal-button:hover{background:#ffffff18}
+.portal-button:hover:enabled{background:#ffffff18;color:inherit}
+.portal-notice{width:min(420px,calc(100% - 36px));padding:24px;border:1px solid var(--line);border-radius:14px;background:var(--white);color:var(--navy)}
+.portal-notice::backdrop{background:#132743a0}
+.portal-notice h2{font-size:27px;letter-spacing:-.025em;margin-bottom:12px}
+.portal-notice p+p{margin-top:8px}
+.portal-notice button{width:auto;height:auto;margin-top:16px;font-size:14px}
 .foundation{display:block;margin-top:9px;color:#715320;font-size:13px;font-weight:700}
 .agenda{padding-block:42px;border-bottom:1px solid var(--line)}
 .section-title{display:flex;align-items:center;gap:14px}
@@ -117,7 +123,7 @@ button:disabled{opacity:.38;cursor:default}
 <a class="identity" href="#inicio"><img src="Novo%20logo.png" alt=""> CLUBE CAR</a>
 <nav aria-label="Navegação principal">
 <div class="nav-pages"><a href="#clube">O clube</a><a href="#agenda">Agenda</a><a href="#instagram">Fotos</a><a href="#estatuto">Estatuto</a></div>
-<a class="pill portal-button" href="https://painel.clubecarcp.com.br/">Portal do associado</a>
+<button class="pill portal-button" id="portal-button" type="button" data-url="https://painel.clubecarcp.com.br/">Portal do associado</button>
 <div class="social-links">
 <a class="social" href="https://www.instagram.com/clubecarcornelio/" aria-label="Instagram do CLUBE CAR" title="Instagram" target="_blank" rel="noopener noreferrer"><img src="instagram.svg" alt=""></a>
 <a class="social" href="https://www.facebook.com/share/g/1FpXGF1zMD/" aria-label="Grupo do CLUBE CAR no Facebook" title="Grupo no Facebook" target="_blank" rel="noopener noreferrer"><img src="facebook.svg" alt=""></a>
@@ -186,6 +192,13 @@ button:disabled{opacity:.38;cursor:default}
 <a class="social" href="https://www.instagram.com/clubecarcornelio/" aria-label="Instagram do CLUBE CAR" title="Instagram" target="_blank" rel="noopener noreferrer"><img src="instagram.svg" alt=""></a>
 <a class="social" href="https://www.facebook.com/share/g/1FpXGF1zMD/" aria-label="Grupo do CLUBE CAR no Facebook" title="Grupo no Facebook" target="_blank" rel="noopener noreferrer"><img src="facebook.svg" alt=""></a>
 </div></div></footer>
+<dialog class="portal-notice" id="portal-notice" aria-labelledby="portal-notice-title" aria-describedby="portal-hours portal-next-opening">
+<h2 id="portal-notice-title">Portal fora do horário</h2>
+<p id="portal-hours">Durante a validação, o portal funciona de segunda a sexta, das 08h às 18h, no horário de Brasília.</p>
+<p id="portal-next-opening"></p>
+<form method="dialog"><button class="pill" autofocus>Fechar</button></form>
+</dialog>
+<script src="horario-portal.js"></script>
 <script src="agenda-clube-car.js"></script>
 <script>
 const partesHoje = new Intl.DateTimeFormat('pt-BR', {
