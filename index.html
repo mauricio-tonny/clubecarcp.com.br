@@ -38,9 +38,7 @@ h1{font-size:clamp(40px,7.3vw,106px);line-height:.9;letter-spacing:-.08em;font-w
 .social img{width:19px;height:19px}
 .social-links{display:flex;gap:8px}
 .portal-button{width:auto;height:auto;color:inherit;border:1px solid #ffffff60;font-size:inherit;font-weight:inherit}
-.portal-button:hover:enabled{background:#ffffff18}
-#portal-status{position:fixed;inset:80px max(18px,calc((100vw - 1240px)/2)) auto auto;margin:0;padding:12px 17px;border:1px solid var(--line);border-radius:10px;background:var(--white);color:var(--navy);font-size:14px}
-@media(max-width:660px){#portal-status{top:135px}}
+.portal-button:hover{background:#ffffff18}
 .foundation{display:block;margin-top:9px;color:#715320;font-size:13px;font-weight:700}
 .agenda{padding-block:42px;border-bottom:1px solid var(--line)}
 .section-title{display:flex;align-items:center;gap:14px}
@@ -105,8 +103,7 @@ button:disabled{opacity:.38;cursor:default}
 <a class="identity" href="#inicio"><img src="Novo%20logo.png" alt=""> CLUBE CAR</a>
 <nav aria-label="Navegação principal">
 <div class="nav-pages"><a href="#clube">O clube</a><a href="#agenda">Agenda</a><a href="#instagram">Fotos</a><a href="#estatuto">Estatuto</a></div>
-<button class="pill portal-button" type="button" popovertarget="portal-status">Portal do associado</button>
-<span id="portal-status" popover>Portal do associado em breve.</span>
+<a class="pill portal-button" href="https://painel.clubecarcp.com.br/">Portal do associado</a>
 <div class="social-links">
 <a class="social" href="https://www.instagram.com/clubecarcornelio/" aria-label="Instagram do CLUBE CAR" title="Instagram" target="_blank" rel="noopener noreferrer"><img src="instagram.svg" alt=""></a>
 <a class="social" href="https://www.facebook.com/share/g/1FpXGF1zMD/" aria-label="Grupo do CLUBE CAR no Facebook" title="Grupo no Facebook" target="_blank" rel="noopener noreferrer"><img src="facebook.svg" alt=""></a>
