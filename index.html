@@ -53,6 +53,11 @@ h1{font-size:clamp(40px,7.3vw,106px);line-height:.9;letter-spacing:-.08em;font-w
 .event-list li{display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:16px;padding:15px 0;border-top:1px solid var(--line)}
 .event-list time{font-size:14px;font-weight:750;color:#715320}
 .event-list p{color:var(--ink);font-size:14px}
+.agenda-pages{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
+.agenda-pages[hidden]{display:none}
+.agenda-pages output{font-size:14px;color:var(--ink)}
+.agenda-controls{display:flex;gap:8px}
+.agenda-controls button{width:auto;height:auto;min-height:44px;font-size:14px;font-weight:650}
 .about{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding-block:46px 48px;border-bottom:1px solid var(--line)}
 h2{font-size:clamp(35px,5.4vw,68px);line-height:1.02;letter-spacing:-.065em;font-weight:800}
 .about p,.feed p,.row p{color:var(--ink)}
@@ -138,6 +143,13 @@ button:disabled{opacity:.38;cursor:default}
 <h2 class="section-title" id="agenda-titulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 4h2m4 0h2m-8 3h2"/></svg>Próximos eventos</h2>
 <p class="agenda-note" id="agenda-nota">Encontros do clube e de outras cidades.</p>
 <ul class="event-list" id="eventos"></ul>
+<div class="agenda-pages" id="agenda-pages" hidden>
+<output id="agenda-page-label" aria-live="polite"></output>
+<div class="agenda-controls">
+<button type="button" class="pill" id="agenda-prev" aria-controls="eventos">← Anterior</button>
+<button type="button" class="pill" id="agenda-next" aria-controls="eventos">Próxima →</button>
+</div>
+</div>
 <noscript><p>Ative o JavaScript para consultar a agenda.</p></noscript>
 </section>
 <section id="instagram" class="wrap feed" aria-labelledby="feed-titulo">
@@ -180,7 +192,7 @@ if (!listaEventos.length) {
   notaAgenda.textContent = 'Nenhum evento programado.';
 }
 
-for (const evento of listaEventos) {
+function criarItemEvento(evento) {
   const item = document.createElement('li');
   const data = document.createElement('time');
   const detalhes = document.createElement('div');
@@ -196,8 +208,30 @@ for (const evento of listaEventos) {
   local.textContent = [evento.cidade, origem].join(' · ');
   detalhes.append(nome, local);
   item.append(data, detalhes);
-  agenda.append(item);
+  return item;
 }
+
+const porPagina = 5;
+const totalPaginas = Math.ceil(listaEventos.length / porPagina);
+const paginacao = document.querySelector('#agenda-pages');
+const paginaAtual = document.querySelector('#agenda-page-label');
+const anterior = document.querySelector('#agenda-prev');
+const proxima = document.querySelector('#agenda-next');
+let pagina = 0;
+
+function mostrarPagina(indice) {
+  pagina = Math.max(0, Math.min(indice, totalPaginas - 1));
+  const inicio = pagina * porPagina;
+  agenda.replaceChildren(...listaEventos.slice(inicio, inicio + porPagina).map(criarItemEvento));
+  paginacao.hidden = totalPaginas <= 1;
+  paginaAtual.textContent = `Página ${pagina + 1} de ${totalPaginas}`;
+  anterior.disabled = pagina === 0;
+  proxima.disabled = pagina >= totalPaginas - 1;
+}
+
+anterior.addEventListener('click', () => mostrarPagina(pagina - 1));
+proxima.addEventListener('click', () => mostrarPagina(pagina + 1));
+mostrarPagina(0);
 
 const track = document.querySelector('#fotos');
 const previous = document.querySelector('#previous');
