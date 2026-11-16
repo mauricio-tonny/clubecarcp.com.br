@@ -1,9 +1,6 @@
 // Use datas no formato AAAA-MM-DD.
-// Para eventos de um dia, omita fim. Use "clube" ou "regional" no campo tipo.
+// Para eventos de um dia, omita fim. Use "clube", "regional" ou "internacional" no campo tipo.
 const eventos = [
-  { nome: 'Encontro de veículos antigos', cidade: 'Jaguapitã, PR', inicio: '2026-11-14', fim: '2026-11-15', tipo: 'regional' },
-  { nome: 'Encontro de veículos antigos', cidade: 'Mamborê, PR', inicio: '2026-11-15', tipo: 'regional' },
-  { nome: 'Encontro de veículos antigos', cidade: 'Santa Amélia, PR', inicio: '2026-11-15', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Pitanga, PR', inicio: '2026-11-19', fim: '2026-11-20', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Bandeirantes, PR', inicio: '2026-11-22', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Indianópolis, PR', inicio: '2026-11-22', tipo: 'regional' },
@@ -28,7 +25,9 @@ const eventos = [
   { nome: 'Encontro de veículos antigos', cidade: 'Campo Mourão, PR', inicio: '2027-02-21', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Distrito de Iguatemi (Maringá), PR', inicio: '2027-02-26', fim: '2027-02-28', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Álvares Machado, SP', inicio: '2027-03-06', fim: '2027-03-07', tipo: 'regional' },
+  { nome: 'Encontro de veículos antigos', cidade: 'Campo 9, Paraguai', inicio: '2027-03-06', fim: '2027-03-07', tipo: 'internacional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Assis Chateaubriand, PR', inicio: '2027-03-07', tipo: 'regional' },
+  { nome: 'Encontro de veículos antigos', cidade: 'Iporã, PR', inicio: '2027-03-13', fim: '2027-03-14', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Tibagi, PR', inicio: '2027-03-14', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Cafelândia, PR', inicio: '2027-03-14', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Pato Bragado, PR', inicio: '2027-03-20', tipo: 'regional' },
@@ -46,6 +45,7 @@ const eventos = [
   { nome: 'Encontro de veículos antigos', cidade: 'Tapira, PR', inicio: '2027-08-21', fim: '2027-08-22', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Capitão Leônidas Marques, PR', inicio: '2027-08-29', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Jaguapitã, PR', inicio: '2027-09-11', fim: '2027-09-12', tipo: 'regional' },
+  { nome: 'Encontro de veículos antigos', cidade: 'Figueira, PR', inicio: '2027-09-12', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Ibaiti, PR', inicio: '2027-10-10', tipo: 'regional' },
   { nome: 'Encontro de veículos antigos', cidade: 'Mandaguaçu, PR', inicio: '2027-10-16', fim: '2027-10-17', tipo: 'regional' }
 ];
